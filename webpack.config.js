@@ -1,31 +1,32 @@
+const merge = require('webpack-merge');
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const path = require('path');
-const webpack = require('webpack');
-module.exports = {
 
-    devServer: {
-        watchOptions: {
-            aggregateTimeout: 300,
-            poll: 1000
-        },
+const parts = require('./webpack.parts');
 
-        stats: "errors-only",
+const commonConfig = merge([
+    {
+        plugins: [
+            new HtmlWebpackPlugin({
+                title: "Webpack demo"
+            })
+        ]
+    }
+]);
+
+const productionConfig = merge([]);
+
+const developmentConfig = merge([
+    parts.devServer({
         host: process.env.HOST,
-        port: process.env.PORT,
+        port: process.env.PORT
+    })
+]);
 
-        overlay: {
-            errors: true,
-            warnings: true
-        }
-    },
+module.exports = mode => {
 
-    plugins: [
-        new webpack.WatchIgnorePlugin([
-            path.join(__dirname, "node_modules")
-        ]),
+    if (mode === "production") {
+        return  merge(commonConfig, productionConfig, { mode });
+    }
 
-        new HtmlWebpackPlugin({
-            title: "Webpack demo"
-        })
-    ]
+    return merge(commonConfig, developmentConfig, { mode });
 };
