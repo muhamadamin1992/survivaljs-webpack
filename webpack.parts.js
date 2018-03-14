@@ -14,11 +14,11 @@ exports.loadCSS = ({ include, exclude } = {}) => ({
     module: {
         rules: [
             {
-                test: /\.less$/,
+                test: /\.scss$/,
                 include,
                 exclude,
 
-                use: ["style-loader", "css-loader", "less-loader"]
+                use: ["style-loader", "css-loader", "sass-loader"]
             }
         ]
     }
