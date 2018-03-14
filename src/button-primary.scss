@@ -1,0 +1,80 @@
+.button-primary {
+  display: inline-block;
+  position: relative;
+  border: none;
+  width: 177px;
+  height: 61px;
+  font-size: 16px;
+  background-color: yellow;
+  color: #000;
+  text-align: left;
+  line-height: 61px;
+  vertical-align: top;
+
+  &:hover {
+    color: #000;
+    text-decoration: none;
+  }
+
+  &:before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 61px;
+    background-color: yellow;
+    transition: all .8s ease;
+  }
+
+  &:after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    width: 47px;
+    height: 61px;
+    background: inline('../img/arrow.png') center no-repeat;
+    transition: all .3s ease;
+  }
+
+  &--next {
+    padding-left: 21px;
+
+    @media (max-width: 450px) {
+      margin-bottom: 10px;
+    }
+
+    &:before {
+      right: 0;
+    }
+
+    &:after {
+      right: 21px;
+    }
+
+    &:hover:after {
+      transform: rotateX(360deg) translateX(10px);
+    }
+
+  }
+
+  &--prev {
+    padding-right: 21px;
+    text-align: right;
+
+    &:before {
+      left: 0;
+    }
+
+    &:after {
+      left: 21px;
+      transform: rotateY(180deg);
+    }
+    
+    &:hover:after {
+      transform: rotate(180deg) translateX(10px);
+    }
+
+  }
+}

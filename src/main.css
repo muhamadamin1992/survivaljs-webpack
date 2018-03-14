@@ -1,3 +1,5 @@
 body {
     background: lime;
 }
+
+@import "./button-primary.scss";

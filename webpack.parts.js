@@ -20,13 +20,13 @@ exports.loadCSS = ({ include, exclude } = {}) => ({
 
                 use: [
                     "style-loader",
-                    "css-loader",
                     {
-                        loader: "postcss-loader",
+                        loader: "css-loader",
                         options: {
-                            plugins: () => [require("postcss-cssnext")()]
+                            importLoaders: 1
                         }
-                    }
+                    },
+                    "sass-loader"
                 ]
             }
         ]
