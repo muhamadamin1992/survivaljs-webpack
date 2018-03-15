@@ -1,3 +1,7 @@
 body {
     background: cornsilk;
 }
+
+.pure-button {
+    display: flex;
+}
