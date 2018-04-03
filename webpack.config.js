@@ -2,9 +2,10 @@ const merge = require('webpack-merge');
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 const glob = require("glob");
+const path = require("path");
 const parts = require('./webpack.parts');
 const PATHS = {
-    app:"./src"
+    app: path.join(__dirname, 'src')
 };
 
 const commonConfig = merge([
@@ -36,11 +37,42 @@ const developmentConfig = merge([
     parts.loadCSS()
 ]);
 
-module.exports = mode => {
+module.exports = {
+    module: {
+        rules: [
+            {
+                test: /\.js$/,
+                include: PATHS.app,
 
-    if (mode === "production") {
-        return  merge(commonConfig, productionConfig, { mode });
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['env']
+                    }
+                }
+            },
+            {
+                test: /\.css$/,
+                use: 'style-loader'
+            },
+            {
+                test: /\.css$/,
+                use: 'css-loader'
+            },
+            {
+                test: /\.js$/,
+                enforce: 'pre',
+                use: 'eslint-loader'
+            }
+        ]
     }
-
-    return merge(commonConfig, developmentConfig, { mode });
 };
+
+// module.exports = mode => {
+
+//     if (mode === "production") {
+//         return  merge(commonConfig, productionConfig, { mode });
+//     }
+
+//     return merge(commonConfig, developmentConfig, { mode });
+// };

@@ -12,7 +12,10 @@
   "license": "ISC",
   "devDependencies": {
     "autoprefixer": "^8.1.0",
+    "babel-loader": "^7.1.4",
     "css-loader": "^0.28.10",
+    "eslint": "^4.19.1",
+    "eslint-loader": "^2.0.0",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "fast-sass-loader": "^1.4.0",
     "glob": "^7.1.2",
@@ -33,6 +36,8 @@
     "webpack-merge": "^4.1.2"
   },
   "dependencies": {
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
     "bootstrap": "^4.0.0",
     "less": "^3.0.1",
     "purecss": "^1.0.0"
