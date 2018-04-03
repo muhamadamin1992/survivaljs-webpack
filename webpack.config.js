@@ -86,12 +86,13 @@ module.exports = {
                 use: "file-loader"
             },
             {
-                test: /\.(ttf|eot|woff|woff2)$/,
-                use: {
-                    loader: "file-loader",
-                    options: {
-                        name: "fonts/[name].[ext]"
-                    }
+                test: /\.woff2?(\?v=\d+\.\d+\.\d+)?$/,
+                loader: "url-loader",
+                options: {
+                    limit: 50000,
+                    mimetype: "application/font-woff",
+                    name: "fonts/[name].[ext]",
+                    publicPath: "../"
                 }
             }
         ]

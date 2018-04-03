@@ -16,10 +16,7 @@ body {
 
 @font-face {
   font-family: Geometria;
-  src: url("./Geometria-Bold.woff2") format("woff2"),
-       url("./Geometria-Bold.woff") format("woff"),
-       url("./Geometria-Bold.eot") format("embedded-opentype"),
-       url("./Geometria-Bold.ttf") format("truetype");
+  src: url("./Geometria-Bold.woff2") format("woff2");
   font-weight: 700;
   font-style: normal;
 }
