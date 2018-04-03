@@ -45,51 +45,64 @@ const developmentConfig = merge([
     parts.loadImages()
 ]);
 
-// module.exports = {
-//     module: {
-//         rules: [
-//             {
-//                 test: /\.js$/,
-//                 include: PATHS.app,
+module.exports = {
+    module: {
+        rules: [
+            {
+                test: /\.js$/,
+                include: PATHS.app,
 
-//                 use: {
-//                     loader: 'babel-loader',
-//                     options: {
-//                         presets: ['env']
-//                     }
-//                 }
-//             },
-//             {
-//                 test: /\.(jpg|png)$/,
-//                 use: {
-//                     loader: "file-loader",
-//                     options: {
-//                         name: "[name].[ext]"
-//                     }
-//                 }
-//             },
-//             {
-//                 test: /\.css$/,
-//                 use: 'style-loader'
-//             },
-//             {
-//                 test: /\.css$/,
-//                 use: 'css-loader'
-//             },
-//             {
-//                 test: /\.js$/,
-//                 enforce: 'pre',
-//                 use: 'eslint-loader'
-//             }
-//         ]
-//     }
-// };
-
-module.exports = mode => {
-
-    if (mode === "production") {
-        return  merge(commonConfig, productionConfig, { mode });
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['env']
+                    }
+                }
+            },
+            {
+                test: /\.(jpg|png)$/,
+                use: {
+                    loader: "file-loader",
+                    options: {
+                        name: "[name].[ext]"
+                    }
+                }
+            },
+            {
+                test: /\.css$/,
+                use: 'style-loader'
+            },
+            {
+                test: /\.css$/,
+                use: 'css-loader'
+            },
+            {
+                test: /\.js$/,
+                enforce: 'pre',
+                use: 'eslint-loader'
+            },
+            {
+                test: /\.svg$/,
+                use: "file-loader"
+            },
+            {
+                test: /\.(ttf|eot|woff|woff2)$/,
+                use: {
+                    loader: "file-loader",
+                    options: {
+                        name: "fonts/[name].[ext]"
+                    }
+                }
+            }
+        ]
     }
-
-    return merge(commonConfig, developmentConfig, { mode });
 };
+
+// module.exports = mode => {
+
+//     if (mode === "production") {
+//         return  merge(commonConfig, productionConfig, { mode });
+//     }
+
+//     return merge(commonConfig, developmentConfig, { mode });
+// };

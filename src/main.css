@@ -9,3 +9,17 @@ body {
 .pure-button {
     display: flex;
 }
+
+.icon {
+    background-image: url("angular.svg");
+}
+
+@font-face {
+  font-family: Geometria;
+  src: url("./Geometria-Bold.woff2") format("woff2"),
+       url("./Geometria-Bold.woff") format("woff"),
+       url("./Geometria-Bold.eot") format("embedded-opentype"),
+       url("./Geometria-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
