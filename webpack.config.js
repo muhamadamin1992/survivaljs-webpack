@@ -25,6 +25,13 @@ const productionConfig = merge([
 
     parts.purifyCSS({
         paths: glob.sync(`${PATHS.app}/**/*.js`, { nodir: true })
+    }),
+
+    parts.loadImages({
+        options: {
+            limit: 15000,
+            name: "[name].[ext]"
+        }
     })
 ]);
 
@@ -34,45 +41,55 @@ const developmentConfig = merge([
         port: process.env.PORT
     }),
     
-    parts.loadCSS()
+    parts.loadCSS(),
+    parts.loadImages()
 ]);
 
-module.exports = {
-    module: {
-        rules: [
-            {
-                test: /\.js$/,
-                include: PATHS.app,
+// module.exports = {
+//     module: {
+//         rules: [
+//             {
+//                 test: /\.js$/,
+//                 include: PATHS.app,
 
-                use: {
-                    loader: 'babel-loader',
-                    options: {
-                        presets: ['env']
-                    }
-                }
-            },
-            {
-                test: /\.css$/,
-                use: 'style-loader'
-            },
-            {
-                test: /\.css$/,
-                use: 'css-loader'
-            },
-            {
-                test: /\.js$/,
-                enforce: 'pre',
-                use: 'eslint-loader'
-            }
-        ]
-    }
-};
-
-// module.exports = mode => {
-
-//     if (mode === "production") {
-//         return  merge(commonConfig, productionConfig, { mode });
+//                 use: {
+//                     loader: 'babel-loader',
+//                     options: {
+//                         presets: ['env']
+//                     }
+//                 }
+//             },
+//             {
+//                 test: /\.(jpg|png)$/,
+//                 use: {
+//                     loader: "file-loader",
+//                     options: {
+//                         name: "[name].[ext]"
+//                     }
+//                 }
+//             },
+//             {
+//                 test: /\.css$/,
+//                 use: 'style-loader'
+//             },
+//             {
+//                 test: /\.css$/,
+//                 use: 'css-loader'
+//             },
+//             {
+//                 test: /\.js$/,
+//                 enforce: 'pre',
+//                 use: 'eslint-loader'
+//             }
+//         ]
 //     }
-
-//     return merge(commonConfig, developmentConfig, { mode });
 // };
+
+module.exports = mode => {
+
+    if (mode === "production") {
+        return  merge(commonConfig, productionConfig, { mode });
+    }
+
+    return merge(commonConfig, developmentConfig, { mode });
+};
