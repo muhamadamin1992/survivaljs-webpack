@@ -32,7 +32,10 @@ const productionConfig = merge([
             limit: 15000,
             name: "[name].[ext]"
         }
-    })
+    }),
+
+    
+    parts.loadFonts()
 ]);
 
 const developmentConfig = merge([
@@ -42,68 +45,69 @@ const developmentConfig = merge([
     }),
     
     parts.loadCSS(),
-    parts.loadImages()
+    parts.loadImages(),
+    parts.loadFonts()
 ]);
 
-module.exports = {
-    module: {
-        rules: [
-            {
-                test: /\.js$/,
-                include: PATHS.app,
+// module.exports = {
+//     module: {
+//         rules: [
+//             {
+//                 test: /\.js$/,
+//                 include: PATHS.app,
 
-                use: {
-                    loader: 'babel-loader',
-                    options: {
-                        presets: ['env']
-                    }
-                }
-            },
-            {
-                test: /\.(jpg|png)$/,
-                use: {
-                    loader: "file-loader",
-                    options: {
-                        name: "[name].[ext]"
-                    }
-                }
-            },
-            {
-                test: /\.css$/,
-                use: 'style-loader'
-            },
-            {
-                test: /\.css$/,
-                use: 'css-loader'
-            },
-            {
-                test: /\.js$/,
-                enforce: 'pre',
-                use: 'eslint-loader'
-            },
-            {
-                test: /\.svg$/,
-                use: "file-loader"
-            },
-            {
-                test: /\.woff2?(\?v=\d+\.\d+\.\d+)?$/,
-                loader: "url-loader",
-                options: {
-                    limit: 50000,
-                    mimetype: "application/font-woff",
-                    name: "fonts/[name].[ext]",
-                    publicPath: "../"
-                }
-            }
-        ]
-    }
-};
-
-// module.exports = mode => {
-
-//     if (mode === "production") {
-//         return  merge(commonConfig, productionConfig, { mode });
+//                 use: {
+//                     loader: 'babel-loader',
+//                     options: {
+//                         presets: ['env']
+//                     }
+//                 }
+//             },
+//             {
+//                 test: /\.(jpg|png)$/,
+//                 use: {
+//                     loader: "file-loader",
+//                     options: {
+//                         name: "[name].[ext]"
+//                     }
+//                 }
+//             },
+//             {
+//                 test: /\.css$/,
+//                 use: 'style-loader'
+//             },
+//             {
+//                 test: /\.css$/,
+//                 use: 'css-loader'
+//             },
+//             {
+//                 test: /\.js$/,
+//                 enforce: 'pre',
+//                 use: 'eslint-loader'
+//             },
+//             {
+//                 test: /\.svg$/,
+//                 use: "file-loader"
+//             },
+//             {
+//                 test: /\.woff2?(\?v=\d+\.\d+\.\d+)?$/,
+//                 loader: "url-loader",
+//                 options: {
+//                     limit: 50000,
+//                     mimetype: "application/font-woff",
+//                     name: "fonts/[name].[ext]",
+//                     publicPath: "../"
+//                 }
+//             }
+//         ]
 //     }
-
-//     return merge(commonConfig, developmentConfig, { mode });
 // };
+
+module.exports = mode => {
+
+    if (mode === "production") {
+        return  merge(commonConfig, productionConfig, { mode });
+    }
+
+    return merge(commonConfig, developmentConfig, { mode });
+};

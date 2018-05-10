@@ -11,12 +11,13 @@ body {
 }
 
 .icon {
-    background-image: url("angular.svg");
+    /* background-image: url("angular.svg"); */
 }
 
 @font-face {
   font-family: Geometria;
-  src: url("./Geometria-Bold.woff2") format("woff2");
+  src: url("./Geometria-Bold.woff") format("woff"),
+       url("./Geometria-Bold.woff2") format("woff2");
   font-weight: 700;
   font-style: normal;
 }
