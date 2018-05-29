@@ -22,6 +22,11 @@ const commonConfig = merge([
 ]);
 
 const productionConfig = merge([
+
+    parts.generateSourceMaps({
+        type: "source-map"
+    }),
+
     parts.extractCSS({
         use: ["css-loader", parts.autoprefix()]
     }),
