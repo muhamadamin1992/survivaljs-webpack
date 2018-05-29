@@ -16,9 +16,17 @@ const commonConfig = merge([
             })
         ]
     },
+    parts.loadJavaScript({
+        include: PATHS.app
+    })
 ]);
 
 const productionConfig = merge([
+
+    parts.generateSourceMaps({
+        type: "cheap-eval-source-map"
+    }),
+
     parts.extractCSS({
         use: ["css-loader", parts.autoprefix()]
     }),
@@ -35,7 +43,6 @@ const productionConfig = merge([
     }),
 
     
-    parts.loadFonts()
 ]);
 
 const developmentConfig = merge([
@@ -45,65 +52,13 @@ const developmentConfig = merge([
     }),
     
     parts.loadCSS(),
-    parts.loadImages(),
-    parts.loadFonts()
+    parts.loadImages()
 ]);
 
-// module.exports = {
-//     module: {
-//         rules: [
-//             {
-//                 test: /\.js$/,
-//                 include: PATHS.app,
-
-//                 use: {
-//                     loader: 'babel-loader',
-//                     options: {
-//                         presets: ['env']
-//                     }
-//                 }
-//             },
-//             {
-//                 test: /\.(jpg|png)$/,
-//                 use: {
-//                     loader: "file-loader",
-//                     options: {
-//                         name: "[name].[ext]"
-//                     }
-//                 }
-//             },
-//             {
-//                 test: /\.css$/,
-//                 use: 'style-loader'
-//             },
-//             {
-//                 test: /\.css$/,
-//                 use: 'css-loader'
-//             },
-//             {
-//                 test: /\.js$/,
-//                 enforce: 'pre',
-//                 use: 'eslint-loader'
-//             },
-//             {
-//                 test: /\.svg$/,
-//                 use: "file-loader"
-//             },
-//             {
-//                 test: /\.woff2?(\?v=\d+\.\d+\.\d+)?$/,
-//                 loader: "url-loader",
-//                 options: {
-//                     limit: 50000,
-//                     mimetype: "application/font-woff",
-//                     name: "fonts/[name].[ext]",
-//                     publicPath: "../"
-//                 }
-//             }
-//         ]
-//     }
-// };
 
 module.exports = mode => {
+
+    process.env.BABEL_ENV = mode;
 
     if (mode === "production") {
         return  merge(commonConfig, productionConfig, { mode });

@@ -88,23 +88,19 @@ exports.loadImages = ({ include, exclude, options } = {}) => ({
     }
 });
 
-
-
-exports.loadFonts = ({} = {}) => ({
+exports.loadJavaScript = ({ include, exclude } = {}) => ({
     module: {
         rules: [
             {
-                test: /\.woff2?(\?v=\d+\d+\.\d+)?$/,
-                use: {
-                    loader: "url-loader",
-                    options: {
-                        limit: 50000,
-                        mimetype: "application/font-woff",
-                        name: "./fonts/[name].[ext]",
-                        publicPath: "../"
-                    }
-                }
+                test: /\.js$/,
+                include,
+                exclude,
+                use: "babel-loader"
             }
         ]
     }
 });
+
+exports.generateSourceMaps = ({ type }) => ({
+    devtool: type
+})
