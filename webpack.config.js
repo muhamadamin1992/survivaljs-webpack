@@ -24,7 +24,7 @@ const commonConfig = merge([
 const productionConfig = merge([
 
     parts.generateSourceMaps({
-        type: "cheap-eval-source-map"
+        type: "cheap-source-map"
     }),
 
     parts.extractCSS({
