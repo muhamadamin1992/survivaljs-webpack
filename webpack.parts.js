@@ -102,5 +102,8 @@ exports.loadJavaScript = ({ include, exclude } = {}) => ({
 });
 
 exports.generateSourceMaps = ({ type }) => ({
-    devtool: type
+    devtool: type,
+    output: {
+        sourceMapFilename: '[file][hash].map'
+    }
 })
