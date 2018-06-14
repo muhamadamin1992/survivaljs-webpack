@@ -24,7 +24,7 @@ const commonConfig = merge([
 const productionConfig = merge([
 
     parts.generateSourceMaps({
-        type: "hidden-source-map"
+        type: "nosources-source-map"
     }),
 
     parts.extractCSS({
