@@ -45,16 +45,11 @@ const productionConfig = merge([
     {
         optimization: {
             splitChunks: {
-                cacheGroups: {
-                    commons: {
-                        test: /[\\/]node_modules[\\/]/,
-                        name: "vendor",
-                        chunks: "initial"
-                    }
-                }
+                chunks: "initial"
             }
         }
     }
+
 ]);
 
 const developmentConfig = merge([
