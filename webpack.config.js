@@ -60,10 +60,10 @@ const productionConfig = merge([
     {
         
         plugins: [
-            new webpack.optimize.AggressiveSplittingPlugin({
+            new webpack.optimize.AggressiveMergingPlugin({
 
-                minSize: 10000,
-                maxSize: 30000
+                minSizeReduce: 2,
+                moveToParents: true
 
             })
         ]
