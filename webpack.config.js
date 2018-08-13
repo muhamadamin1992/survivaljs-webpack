@@ -1,4 +1,5 @@
 const merge = require('webpack-merge');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 const glob = require("glob");
@@ -42,7 +43,31 @@ const productionConfig = merge([
         }
     }),
 
-    
+    {
+        optimization: {
+            splitChunks: {
+                cacheGroups: {
+                    commons: {
+                        test: /[\\/]node_modules[\\/]/,
+                        name: "vendor",
+                        chunks: "initial"
+                    }
+                }
+            }
+        }
+    },
+
+    {
+        
+        plugins: [
+            new webpack.optimize.AggressiveSplittingPlugin({
+
+                minSize: 10000,
+                maxSize: 30000
+
+            })
+        ]
+    }
 ]);
 
 const developmentConfig = merge([
