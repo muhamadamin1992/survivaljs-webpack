@@ -54,6 +54,10 @@ const productionConfig = merge([
                     }
                 }
             }
+        },
+
+        output: {
+            chunkFilename: "chunk.[id].js"
         }
     },
 
