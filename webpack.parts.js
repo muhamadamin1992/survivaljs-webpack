@@ -1,5 +1,10 @@
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const PurifyCSSPlugin = require("purifycss-webpack");
+const CleanWebpackPlugin = require("clean-webpack-plugin");
+
+exports.clean = path => ({
+    plugins: [new CleanWebpackPlugin([path])]
+});
 
 exports.autoprefix = () => ({
     loader: "postcss-loader",
