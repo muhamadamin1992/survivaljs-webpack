@@ -10,7 +10,11 @@ export default (text = "Hello world") => {
         })
         .catch(err => {
             console.error(err);
+<<<<<<< HEAD
         });
+=======
+        })
+>>>>>>> 6226ea94227f05c85f5339f47b3ed5b2290cb335
 
     return element;
 };
