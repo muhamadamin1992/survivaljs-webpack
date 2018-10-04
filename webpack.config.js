@@ -26,6 +26,17 @@ const productionConfig = merge([
 
     parts.clean(PATHS.build),
 
+    parts.minifyJavaScript(),
+
+    parts.minifyCSS({
+        options: {
+            discardComments: {
+                removeAll: true,
+                safe: true
+            }
+        }
+    }),
+
     parts.generateSourceMaps({
         type: "source-map"
     }),
@@ -58,8 +69,6 @@ const productionConfig = merge([
             }
         }
     },
-
-    parts.minifyJavaScript(),
 
     parts.attachRevision()
 ]);
