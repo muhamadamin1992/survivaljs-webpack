@@ -35,6 +35,8 @@
     "purifycss-webpack": "^0.7.0",
     "sass-loader": "^6.0.7",
     "style-loader": "^0.20.3",
+    "terser-webpack-plugin": "^1.1.0",
+    "uglifyjs-webpack-plugin": "^2.0.1",
     "url-loader": "^1.0.1",
     "webpack": "^4.8.1",
     "webpack-cli": "^2.1.3",

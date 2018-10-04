@@ -10,7 +10,7 @@ export default (text = "Hello world") => {
         })
         .catch(err => {
             console.error(err);
-        })
+        });
 
     return element;
 };

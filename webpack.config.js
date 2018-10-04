@@ -59,6 +59,8 @@ const productionConfig = merge([
         }
     },
 
+    parts.minifyJavaScript(),
+
     parts.attachRevision()
 ]);
 

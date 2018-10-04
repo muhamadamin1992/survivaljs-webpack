@@ -3,6 +3,15 @@ const PurifyCSSPlugin = require("purifycss-webpack");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 const webpack = require("webpack");
 const GitRevisionPlugin = require("git-revision-webpack-plugin");
+const TerserPlugin = require('terser-webpack-plugin');
+
+exports.minifyJavaScript = () => ({
+    optimization: {
+        minimizer: [new TerserPlugin({
+            sourceMap: true
+        })]
+    }
+});
 
 exports.attachRevision = () => ({
     plugins: [
