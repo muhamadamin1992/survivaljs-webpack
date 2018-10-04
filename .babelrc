@@ -2,6 +2,7 @@
     "presets": [
         [
             {
+                "plugins": ["syntax-dynamic-import"],
                 "env": {
                     "development": {
                         "plugins": [
