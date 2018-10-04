@@ -40,7 +40,21 @@ const productionConfig = merge([
             limit: 15000,
             name: "[name].[ext]"
         }
-    })
+    }),
+
+    {
+        optimization: {
+            splitChunks: {
+                cacheGroups: {
+                    commons: {
+                        test: /[\\/]node_modules[\\/]/,
+                        name: "vendor",
+                        chunks: "initial"
+                    }
+                }
+            }
+        }
+    }
 ]);
 
 const developmentConfig = merge([
