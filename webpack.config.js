@@ -57,7 +57,9 @@ const productionConfig = merge([
                 }
             }
         }
-    }
+    },
+
+    parts.attachRevision()
 ]);
 
 const developmentConfig = merge([

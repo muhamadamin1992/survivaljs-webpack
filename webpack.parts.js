@@ -1,6 +1,16 @@
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const PurifyCSSPlugin = require("purifycss-webpack");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
+const webpack = require("webpack");
+const GitRevisionPlugin = require("git-revision-webpack-plugin");
+
+exports.attachRevision = () => ({
+    plugins: [
+        new webpack.BannerPlugin({
+            banner: new GitRevisionPlugin().version()
+        })
+    ]
+})
 
 exports.clean = path => ({
     plugins: [new CleanWebpackPlugin([path])]
