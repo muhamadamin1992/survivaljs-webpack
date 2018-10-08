@@ -30,7 +30,9 @@ const productionConfig = merge([
         output: {
             chunkFilename: "[name].[chunkhash:4].js",
             filename: "[name].[chunkhash:4].js"
-        }
+        },
+        
+        recordsPath: path.join(__dirname, "records.json")
     },
 
     parts.clean(PATHS.build),
@@ -65,6 +67,7 @@ const productionConfig = merge([
         }
     }),
 
+
     {
         optimization: {
             splitChunks: {
@@ -75,6 +78,10 @@ const productionConfig = merge([
                         chunks: "initial"
                     }
                 }
+            },
+
+            runtimeChunk: {
+                name: "manifest"
             }
         }
     },
