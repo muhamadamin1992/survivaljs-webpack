@@ -1,5 +1,6 @@
 const merge = require('webpack-merge');
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const HappyPack = require("happypack");
 
 const glob = require("glob");
 const path = require("path");
@@ -10,6 +11,15 @@ const PATHS = {
 };
 
 const commonConfig = merge([
+    {
+        plugins: [
+            new HappyPack({
+                loaders: [
+                    "babel-loader"
+                ]
+            })
+        ]
+    },
     {
         plugins: [
             new HtmlWebpackPlugin({

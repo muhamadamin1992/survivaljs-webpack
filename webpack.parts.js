@@ -139,7 +139,7 @@ exports.loadJavaScript = ({ include, exclude } = {}) => ({
                 test: /\.js$/,
                 include,
                 exclude,
-                use: "babel-loader"
+                use: "happypack/loader"
             }
         ]
     }

@@ -19,7 +19,7 @@
         "byName": {},
         "bySource": {},
         "usedIds": [
-          1
+          0
         ]
       }
     }
@@ -88,7 +88,9 @@
       "node_modules/react-dom/cjs/react-dom.production.min.js": 9,
       "node_modules/react-dom/index.js": 10,
       "node_modules/react/cjs/react.production.min.js": 11,
-      "node_modules/babel-loader/lib/index.js!src/lazy.js": 12
+      "node_modules/babel-loader/lib/index.js!src/lazy.js": 12,
+      "node_modules/happypack/loader.js!src/index.js 7830b4338a66fbdb67e831b72ced61fb": 2,
+      "node_modules/happypack/loader.js!src/lazy.js": 12
     },
     "usedIds": {
       "0": 0,
@@ -113,13 +115,14 @@
       "main": 3
     },
     "bySource": {
-      "0 node_modules/babel-loader/lib/index.js!src/component.js ./lazy": 0
+      "0 node_modules/babel-loader/lib/index.js!src/component.js ./lazy": 0,
+      "0 node_modules/happypack/loader.js!src/component.js ./lazy": 4
     },
     "usedIds": [
-      0,
       1,
       2,
-      3
+      3,
+      4
     ]
   }
 }
