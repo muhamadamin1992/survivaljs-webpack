@@ -26,6 +26,13 @@ const commonConfig = merge([
 
 const productionConfig = merge([
 
+    {
+        output: {
+            chunkFilename: "[name].[chunkhash:4].js",
+            filename: "[name].[chunkhash:4].js"
+        }
+    },
+
     parts.clean(PATHS.build),
 
     parts.minifyJavaScript(),
@@ -54,7 +61,7 @@ const productionConfig = merge([
     parts.loadImages({
         options: {
             limit: 15000,
-            name: "[name].[ext]"
+            name: "[name].[hash:4].[ext]"
         }
     }),
 
