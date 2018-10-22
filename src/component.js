@@ -3,6 +3,7 @@ export default (text = HELLO) => {
 
     element.className = "pure-button";
     element.innerHTML = text;
+    console.log(text);
 
     element.onclick = () => import("./lazy")
         .then(lazy => {

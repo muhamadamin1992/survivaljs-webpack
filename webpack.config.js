@@ -1,5 +1,4 @@
 const merge = require('webpack-merge');
-const HtmlWebpackPlugin = require("html-webpack-plugin");
 const HappyPack = require("happypack");
 
 const glob = require("glob");
@@ -12,18 +11,16 @@ const PATHS = {
 
 const commonConfig = merge([
     {
+        output: {
+            publicPath: "/"
+        }
+    },
+    {
         plugins: [
             new HappyPack({
                 loaders: [
                     "babel-loader"
                 ]
-            })
-        ]
-    },
-    {
-        plugins: [
-            new HtmlWebpackPlugin({
-                title: "Webpack demo"
             })
         ]
     },
@@ -122,9 +119,27 @@ module.exports = mode => {
 
     process.env.BABEL_ENV = mode;
 
-    if (mode === "production") {
-        return  merge(commonConfig, productionConfig, { mode });
-    }
+   const pages = [
+        parts.page({
+           title: "Webpack demo",
+           entry: {
+               app: PATHS.app
+           },
+           path: "",
 
-    return merge(commonConfig, developmentConfig, { mode });
+           chunks: ["app", "manifest", "vendors~app"]
+        }),
+        parts.page({ 
+            title: "Another demo", 
+            path: "another",
+            entry: {
+                another: path.join(PATHS.app, "another.js")
+            },
+
+            chunks: ["another", "manifest", "vendors~app"]
+        })
+   ];
+   console.log(pages)
+   const config = mode === "production" ? productionConfig : developmentConfig;
+   return merge([commonConfig, config, { mode }].concat(pages));
 };
