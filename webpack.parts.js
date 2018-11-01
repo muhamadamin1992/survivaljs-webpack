@@ -106,10 +106,8 @@ exports.devServer = ({ host, port } = {}) => ({
         stats: "errors-only",
         host,
         port,
-        overlay: {
-            errors: true,
-            warnings: true
-        }
+        open: true,
+        overlay: true,
     }
 });
 

@@ -139,7 +139,7 @@ module.exports = mode => {
             chunks: ["another", "manifest", "vendors~app"]
         })
    ];
-   console.log(pages)
+   
    const config = mode === "production" ? productionConfig : developmentConfig;
    return merge([commonConfig, config, { mode }].concat(pages));
 };
