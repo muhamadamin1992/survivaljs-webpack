@@ -15,5 +15,8 @@
   },
   "parserOptions": {
       "sourceType": "module"
+  },
+  "globals": {
+      "__": true
   }
 }

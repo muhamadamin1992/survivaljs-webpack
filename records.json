@@ -93,7 +93,11 @@
       "node_modules/happypack/loader.js!src/lazy.js": 12,
       "node_modules/happypack/loader.js!src/component.js": 2,
       "node_modules/happypack/loader.js!src/index.js c6a9fa1c5f4feb37b82cbd250f82f6cd": 13,
-      "node_modules/happypack/loader.js!src/another.js": 14
+      "node_modules/happypack/loader.js!src/another.js": 14,
+      "node_modules/babel-loader/lib/index.js!src/component.js": 2,
+      "node_modules/worker-loader/dist/cjs.js!node_modules/babel-loader/lib/index.js!src/worker.js": 3,
+      "node_modules/babel-loader/lib/index.js!src/another.js": 5,
+      "node_modules/babel-loader/lib/index.js!src/index.js 7c8d19e0f53075d47af061605879c76d": 12
     },
     "usedIds": {
       "0": 0,
@@ -129,8 +133,7 @@
       0,
       1,
       2,
-      3,
-      4
+      3
     ]
   },
   "html-webpack-plugin for \"another\\index.html\"": [
@@ -154,6 +157,27 @@
         "bySource": {},
         "usedIds": [
           1
+        ]
+      }
+    }
+  ],
+  "worker": [
+    {
+      "modules": {
+        "byIdentifier": {
+          "node_modules/babel-loader/lib/index.js!src/worker.js": 0
+        },
+        "usedIds": {
+          "0": 0
+        }
+      },
+      "chunks": {
+        "byName": {
+          "main": 0
+        },
+        "bySource": {},
+        "usedIds": [
+          0
         ]
       }
     }
